@@ -12,6 +12,8 @@ const prisma_service_1 = require("./prisma/prisma.service");
 const create_account_controller_1 = require("./controllers/create-account.controller");
 const config_1 = require("@nestjs/config");
 const env_1 = require("./env");
+const auth_module_1 = require("./auth/auth.module");
+const authenticate_controller_1 = require("./controllers/authenticate.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -22,8 +24,9 @@ exports.AppModule = AppModule = __decorate([
                 validate: (env) => env_1.envSchema.parse(env),
                 isGlobal: true,
             }),
+            auth_module_1.AuthModule,
         ],
-        controllers: [create_account_controller_1.CreateAccountController],
+        controllers: [create_account_controller_1.CreateAccountController, authenticate_controller_1.AuthenticateController],
         providers: [prisma_service_1.PrismaService],
     })
 ], AppModule);
